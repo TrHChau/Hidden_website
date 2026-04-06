@@ -1,0 +1,14 @@
+@use "@styles/_mixins.module.scss" as *;
+@use "@styles/_variable.module.scss" as *;
+.container {
+  @include flex_box_custom(center, center, 0px);
+  background-image: url(../../assets/icon/images/banner.jpg);
+  min-height: 950px;
+  min-width: 795px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content {
+  @include flex_box_custom(center, center, 20px);
+}
