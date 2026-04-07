@@ -5,7 +5,6 @@
   background-color: $primary_color;
   margin-top: -60px;
   padding: 10px 30px;
-  width: 1100px;
   border-radius: 10px;
   @include flex_box_custom(space-between, center, 20px);
 }

@@ -1,6 +1,7 @@
 import CountdownBanner from "../CountdownBanner/CountdownBanner";
 import CountdownTimer from "../CountdownTimer/CountdownTimer";
 import MainLayout from "../Layout/Layout";
+import ProductItem from "../ProductItem/ProductItem";
 import styles from "./styles.module.scss";
 function HeadingListProduct() {
   const { container, containerItem } = styles;
@@ -10,8 +11,8 @@ function HeadingListProduct() {
       <div className={container}>
         <CountdownBanner />
         <div className={containerItem}>
-          <div>1</div>
-          <div>2</div>
+          <ProductItem />
+          <ProductItem />
         </div>
       </div>
     </MainLayout>
