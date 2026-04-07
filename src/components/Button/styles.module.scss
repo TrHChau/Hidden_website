@@ -1,7 +1,7 @@
 @use "@styles/_mixins.module.scss" as *;
 @use "@styles/_variable.module.scss" as *;
 .btn {
-  @include btn(200px, 50px, 10px, $primary_color);
+  @include btn(200px, 50px, 5px, $primary_color);
   background-color: #333;
   color: aliceblue;
   border: none;
