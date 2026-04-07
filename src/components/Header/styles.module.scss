@@ -38,7 +38,7 @@
 .menu {
   position: relative;
   cursor: pointer;
-  padding-top: 10px;
+  padding-top: 8px;
   color: $primary_color; /* Nếu là thẻ <a> */
 
   &::after {
