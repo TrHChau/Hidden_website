@@ -3,7 +3,7 @@
 .container {
   background-image: url(../../assets/icon/images/bgCountDown.png);
   background-size: cover;
-  height: 500px;
+  height: 450px;
   width: calc(100% / 2);
   background-repeat: no-repeat;
 }
@@ -11,13 +11,14 @@
   @include flex_box_custom(center, center, 10px);
 }
 .title {
-  color: rgb(245, 131, 103);
+  color: rgb(241, 102, 60);
   font-size: 28px;
-  font-weight: 400;
-  margin-bottom: 5px;
+  font-weight: bold;
+  margin-bottom: 15px;
   text-align: center;
 }
 .boxBtn {
   text-align: center;
-  margin-top: 20px;
+
+  margin-bottom: 15px;
 }
