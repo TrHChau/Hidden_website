@@ -2,13 +2,29 @@
 @use "@styles/_variable.module.scss" as *;
 .btn {
   @include btn(200px, 50px, 5px, $primary_color);
-  background-color: #333;
-  color: aliceblue;
+  font-size: 14px;
+  font-weight: 300;
   border: none;
   cursor: pointer;
+  &:hover {
+    transition: background-color 0.3s;
+  }
 }
-.btn:hover {
+.primaryBtn {
+  background-color: $primary_color;
+  color: $white_color;
+  &:hover {
+    background-color: transparent;
+    color: $primary_color;
+    border: 1px solid $primary_color;
+  }
+}
+.secondaryBtn {
   background-color: $white_color;
   color: $primary_color;
   border: 1px solid $primary_color;
+  &:hover {
+    background-color: $primary_color;
+    color: $white_color;
+  }
 }
