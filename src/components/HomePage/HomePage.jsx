@@ -6,7 +6,9 @@ import { getProducts } from "../../apis/productService";
 import Info from "../Info/Info";
 import HeadingListProduct from "../HeadingListProduct/HeadingListProduct";
 import PopularProduct from "../PopularProduct/PopularProduct";
-import SaleHomePage from "../SaleHomePage/SaleHomePage";
+
+import Footer from "../Footer/Footer";
+import SaleHomePage from "../Sale/SaleHomePage/SaleHomePage";
 function HomePage() {
   const [listProduct, setProduct] = useState([]);
   useEffect(() => {
@@ -23,7 +25,7 @@ function HomePage() {
       <HeadingListProduct data={listProduct.slice(0, 2)} />
       <PopularProduct data={listProduct.slice(2, 10)} />
       <SaleHomePage />
-      <div style={{ height: "200px" }}></div>
+      <Footer />
     </div>
   );
 }

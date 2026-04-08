@@ -1,9 +1,10 @@
-import Button from "../Button/Button";
+import usetranslateXImage from "../../../Hook/usetranslateXImage";
+import Button from "../../Button/Button";
 import styles from "./styles.module.scss";
-import useTranslateXImg from "./translateXImg";
+
 function SaleHomePage() {
   const { container, title, des, boxBtn, boxImg } = styles;
-  const { tranlateXPosition } = useTranslateXImg();
+  const { tranlateXPosition } = usetranslateXImage();
 
   return (
     <div className={container}>
