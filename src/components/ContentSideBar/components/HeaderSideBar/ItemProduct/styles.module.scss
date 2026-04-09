@@ -1,0 +1,50 @@
+@use "@styles/_mixins.module.scss" as *;
+@use "@styles/_variable.module.scss" as *;
+.container{
+     @include flex_box_custom( center, flex-start 25px);
+     margin-top: 20px;
+     padding: 20px;
+     transition: all 0.3s ease;
+     position: relative;
+     img{
+        width: 70px;
+
+     }
+     .boxClose{
+
+        position: absolute;
+        top: 5px;
+        right: 0;
+        
+        cursor: pointer;
+        
+     }
+     .boxContent{
+         @include flex_box_custom( center, flex-start 0px);
+            flex-direction: column;
+        .title{
+        font-size: 16px;
+        color:$primary_color;
+     }
+     .size{
+      color: #aca7a7;
+      margin-top: 7px;
+      margin-bottom: 10px;
+      font-size: 14px;
+     }
+     .price{
+         font-size: 14px;
+        color:$primary_color;
+        margin-bottom: 7px;
+     }
+
+    }
+     
+     &:hover{
+        background-color: #e7e5e5;
+     }
+
+}
+    
+
+    
