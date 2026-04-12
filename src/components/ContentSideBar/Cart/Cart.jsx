@@ -3,9 +3,14 @@ import HeaderSideBar from "../components/HeaderSideBar/HeaderSideBar";
 import styles from "./styles.module.scss";
 import ItemProduct from "../components/HeaderSideBar/ItemProduct/ItemProduct";
 import Button from "../../Button/Button";
-
+import { useContext } from 'react';
+import { SideBarContext } from '../../../contexts/SlideBarProvider';
 function Cart() {
      const { container,boxBtn,total} = styles;
+
+    const {listProductCart} =useContext(SideBarContext );
+
+
     return ( 
     <div className={container}>
         <div>
@@ -16,7 +21,17 @@ function Cart() {
                             }}
                         />
                     } title="CART" />
-        <ItemProduct />
+
+        {listProductCart.map((item,index) => {
+            return <ItemProduct key={item._id || item.id || index} 
+            src={item.images[0]}
+            nameProduct={item.name}
+            priceProduct={item.price}
+            skuProduct={item.sku}
+            sizeProduct={item.size}
+            quantity={item.quantity}
+            />
+        })}
         </div> 
         <div>
             <div className={total}>

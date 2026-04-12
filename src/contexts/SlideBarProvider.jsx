@@ -1,11 +1,45 @@
-import { createContext, useState } from "react";
+import { createContext, useState ,useEffect} from "react";
+import { getCart } from '../apis/cartService';
+import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export const SideBarContext = createContext();
+
 export const SidebarProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [type,setType] = useState("");
+  const [listProductCart, setListProductCart] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [detailProduct, setDetailProduct] = useState(null);
+ const userId = Cookies.get("userId");
+  
+  const handleGetListproductCart = (userId, type) => {
+    if(userId && type === 'cart'){
+      getCart(userId)
+      .then((res) => {
+        setListProductCart(res.data.data);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch cart data:", err);
+      });
+    }
+  }
 
- const value = {isOpen,setIsOpen,type,setType,};
+ const value = {
+    isOpen,
+    setIsOpen,
+    type,
+    setType,
+    handleGetListproductCart,
+    listProductCart,
+    setListProductCart,
+    isLoading,
+    setIsLoading,
+    detailProduct,
+    setDetailProduct,
+    userId   
+  };
   return (
     <SideBarContext.Provider value={value}>
      {children}

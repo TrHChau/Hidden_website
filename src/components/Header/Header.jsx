@@ -13,7 +13,7 @@ import { useContext, useEffect, useState } from "react";
 import classNames from "classnames";
 import { SideBarContext } from "../../contexts/SlideBarProvider";
 function Header() {
-  const { containerBoxIcon } = styles;
+  const { containerBoxIcon , boxCart} = styles;
   const {
     containerMenu,
     containerHeader,
@@ -21,10 +21,11 @@ function Header() {
     container,
     topHeader,
     fixedHeader,
+    quantity
   } = styles;
   const { scrollPosition } = useScrollHandling();
   const [fixedPosition, setFixedPosition] = useState(false);
-  const { setIsOpen, setType } = useContext(SideBarContext);
+  const { setIsOpen, setType ,listProductCart} = useContext(SideBarContext);
 
   const handleOpenSideBar = (type) => {
     setIsOpen(true);
@@ -89,12 +90,17 @@ function Header() {
                 }}
                 onClick={() => handleOpenSideBar("wishlist")}
               />
-              <PiShoppingCart
+               <div className={boxCart} >
+                <PiShoppingCart
                 style={{
                   fontSize: "20px",
                 }}
                 onClick={() => handleOpenSideBar("cart")}
               />
+                <div className={quantity}>
+                  {listProductCart.length}
+                </div>
+               </div>
             </div>
           </div>
         </div>
