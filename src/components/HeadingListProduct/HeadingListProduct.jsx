@@ -19,6 +19,7 @@ function HeadingListProduct({ data }) {
               prevSrc={item.images[1]}
               name={item.name}
               prices={item.price}
+              details={item}
             />
           ))}
         </div>

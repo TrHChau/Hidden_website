@@ -1,8 +1,8 @@
 @use "@styles/_mixins.module.scss" as *;
 @use "@styles/_variable.module.scss" as *;
 .boxImg {
-  width: 270px;
-  height: 300px;
+  width: 300px;
+  height: 450px;
   position: relative;
   img {
     width: 100%;
@@ -59,4 +59,42 @@
   font-weight: 400;
   color: $primary_color;
   margin-bottom: 10px;
+}
+.boxSize {
+  @include flex_box_custom(center, center, 10px);
+  .size {
+    @include flex_box_custom(center, center, 0px);
+    border: 1px solid #e1e1e1;
+    padding: 4px 6px;
+    font-size: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid $primary_color;
+      transition: border 0.3s ease-in-out;
+    }
+  }
+}
+.textCenter {
+  text-align: center;
+}
+.boxBtn {
+  width: 100%;
+
+  margin: 10px auto;
+  text-align: center;
+}
+.containerItem {
+  @include flex_box_custom(flex-start, center, 10px);
+  margin-top: 10px;
+  .content {
+    @include flex_box_custom(flex-start, flex-start, 10px);
+    flex-direction: column;
+  }
+  .leftBtn {
+    margin: 0px;
+  }
+  .largImg {
+    width: 430px;
+  }
 }

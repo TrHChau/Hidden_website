@@ -12,7 +12,12 @@ import SaleHomePage from "../Sale/SaleHomePage/SaleHomePage";
 function HomePage() {
   const [listProduct, setProduct] = useState([]);
   useEffect(() => {
-    getProducts().then((res) => {
+    const query = {
+      sortType: 0,
+      page: 1,
+      limit: 10,
+    };
+    getProducts(query).then((res) => {
       setProduct(res.contents);
     });
   }, []);
