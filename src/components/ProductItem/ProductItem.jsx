@@ -4,7 +4,7 @@ import heartIcon from "@icon/svgs/heart.svg";
 import cartIcon from "@icon/svgs/cart.svg";
 import cls from "classnames";
 import Button from "../Button/Button";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { OurShopContext } from "../../contexts/OurShopProvider";
 function ProductItem({
   src,
@@ -14,7 +14,9 @@ function ProductItem({
   details,
   isHomePage = true,
 }) {
-  const { isShowGrid } = useContext(OurShopContext);
+  const ourShopStore = useContext(OurShopContext);
+  const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid);
+
   const {
     boxImg,
     showImageWhenHover,
@@ -31,7 +33,13 @@ function ProductItem({
     leftBtn,
     largImg,
   } = styles;
-
+  useEffect(() => {
+    if (isHomePage) {
+      setIsShowGrid(true);
+    } else {
+      setIsShowGrid(ourShopStore?.isShowGrid);
+    }
+  }, [isHomePage, ourShopStore?.isShowGrid]);
   return (
     <div className={isShowGrid ? "" : containerItem}>
       <div className={cls(boxImg, { [largImg]: !isShowGrid })}>
