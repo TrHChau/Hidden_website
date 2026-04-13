@@ -1,12 +1,14 @@
 import styles from "./styles.module.scss";
 import { IoCloseOutline } from 'react-icons/io5';
-function ItemProduct(
+function ItemProduct({
     src,
     nameProduct,
     priceProduct,
     skuProduct,
     sizeProduct,
     quantity
+}
+    
 ) {
 
     const {boxContent, container, title,price,boxClose , size} = styles;
@@ -23,7 +25,7 @@ function ItemProduct(
             <div className={boxContent}>
                 <div className={title}>{nameProduct}</div>
                 <div className={size}>Size: {sizeProduct}</div>
-                <div className={price}>{quantity} x ${priceProduct.toFixed(2)}</div>
+                <div className={price}>{quantity} x ${priceProduct}</div>
                 <div className={price}>SKU: {skuProduct}</div>
             </div>
         </div>

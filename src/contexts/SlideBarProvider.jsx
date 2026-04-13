@@ -12,16 +12,16 @@ export const SidebarProvider = ({ children }) => {
   const [listProductCart, setListProductCart] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [detailProduct, setDetailProduct] = useState(null);
- const userId = Cookies.get("userId");
+  const userId = Cookies.get("userId");
   
   const handleGetListproductCart = (userId, type) => {
     if(userId && type === 'cart'){
       getCart(userId)
       .then((res) => {
-        setListProductCart(res.data.data);
+      setListProductCart(res.data.data);
       })
       .catch((err) => {
-        console.error("Failed to fetch cart data:", err);
+        setListProductCart([]);
       });
     }
   }

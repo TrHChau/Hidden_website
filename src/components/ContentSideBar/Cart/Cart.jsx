@@ -6,10 +6,11 @@ import Button from "../../Button/Button";
 import { useContext } from 'react';
 import { SideBarContext } from '../../../contexts/SlideBarProvider';
 function Cart() {
-     const { container,boxBtn,total} = styles;
+    const { container,boxBtn,total} = styles;
 
     const {listProductCart} =useContext(SideBarContext );
 
+    console.log(listProductCart);
 
     return ( 
     <div className={container}>
@@ -23,7 +24,7 @@ function Cart() {
                     } title="CART" />
 
         {listProductCart.map((item,index) => {
-            return <ItemProduct key={item._id || item.id || index} 
+            return <ItemProduct key={ index} 
             src={item.images[0]}
             nameProduct={item.name}
             priceProduct={item.price}
