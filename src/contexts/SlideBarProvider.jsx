@@ -16,12 +16,16 @@ export const SidebarProvider = ({ children }) => {
   
   const handleGetListproductCart = (userId, type) => {
     if(userId && type === 'cart'){
+      setIsLoading(true);
       getCart(userId)
       .then((res) => {
+        setIsLoading(false);
       setListProductCart(res.data.data);
       })
       .catch((err) => {
+        
         setListProductCart([]);
+        setIsLoading(false);
       });
     }
   }
@@ -40,6 +44,11 @@ export const SidebarProvider = ({ children }) => {
     setDetailProduct,
     userId   
   };
+
+  useEffect(() => {
+    handleGetListproductCart(userId, 'cart');
+  }, [userId]);
+
   return (
     <SideBarContext.Provider value={value}>
      {children}

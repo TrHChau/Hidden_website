@@ -10,8 +10,8 @@ function App() {
     <StoreProvider>
       <ToastProvider>
         <SidebarProvider>
-          <SideBar />
           <BrowserRouter>
+            <SideBar />
             <Suspense fallback={<div>Loadding.....</div>}>
               <Routes>
                 {routers.map((item, index) => {
