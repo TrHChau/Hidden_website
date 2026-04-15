@@ -12,16 +12,20 @@ export const SidebarProvider = ({ children }) => {
   const [listProductCart, setListProductCart] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [detailProduct, setDetailProduct] = useState(null);
- const userId = Cookies.get("userId");
+  const userId = Cookies.get("userId");
   
   const handleGetListproductCart = (userId, type) => {
     if(userId && type === 'cart'){
+      setIsLoading(true);
       getCart(userId)
       .then((res) => {
-        setListProductCart(res.data.data);
+        setIsLoading(false);
+      setListProductCart(res.data.data);
       })
       .catch((err) => {
-        console.error("Failed to fetch cart data:", err);
+        
+        setListProductCart([]);
+        setIsLoading(false);
       });
     }
   }
@@ -40,6 +44,11 @@ export const SidebarProvider = ({ children }) => {
     setDetailProduct,
     userId   
   };
+
+  useEffect(() => {
+    handleGetListproductCart(userId, 'cart');
+  }, [userId]);
+
   return (
     <SideBarContext.Provider value={value}>
      {children}

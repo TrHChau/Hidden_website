@@ -1,4 +1,5 @@
 @use "@styles/_mixins.module.scss" as *;
+@use "@styles/_variable.module.scss" as *;
 
 .container{
     @include flex_box_custom(space-between, unset, 0px);
@@ -13,4 +14,25 @@
        @include flex_box_custom(space-between, unset, 10px);
          flex-direction: column;
     }
+    .boxEmpty {
+        text-align: center;
+        font-size: 14px;
+        color: $four_color;
+        margin-top: 30px;
+
+        .boxBtnEmpty {
+            width: 162px;
+            margin: 20px auto;
+        }
+    }
+    .containerListItem {
+        @include flex_box_custom(space-between, unset, 0px);
+        flex-direction: column;
+
+        flex-grow: 1;
+    }
+}
+
+.isEmty{
+    justify-content: unset;
 }
