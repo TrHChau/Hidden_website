@@ -1,37 +1,30 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { MdOutlineArrowBackIosNew } from 'react-icons/md';
+import { MdArrowForwardIos } from 'react-icons/md';
+import SliderLib from "react-slick";
+import './styles.css'
 
-function SliderCommon() {
-    var settings = {
-    dots: true,
+function SliderCommon({ data }) {
+  const Slider = SliderLib.default;
+  var settings = {
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <MdArrowForwardIos />,
+    prevArrow: <MdOutlineArrowBackIosNew />
   };
-    return ( 
-        <Slider {...settings}>
-      <div>
-        <h3>1</h3>
-      </div>
-      <div>
-        <h3>2</h3>
-      </div>
-      <div>
-        <h3>3</h3>
-      </div>
-      <div>
-        <h3>4</h3>
-      </div>
-      <div>
-        <h3>5</h3>
-      </div>
-      <div>
-        <h3>6</h3>
-      </div>
+  console.log(data)
+  return (
+    <Slider {...settings}>
+      {data.map((src, index) => {
+        return <img src={src} key={index} alt="test" />
+      })}
     </Slider>
-     );
+  );
 }
 
 export default SliderCommon;
