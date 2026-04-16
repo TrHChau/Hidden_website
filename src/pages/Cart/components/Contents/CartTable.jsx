@@ -1,42 +1,11 @@
 import SelectBox from "../../../OurShop/components/SelectBox";
 import styles from "../../styles.module.scss";
-function CartTable() {
+import LoadingCart from "../Loading";
+function CartTable({ listProductCart, getData, isLoading, getDataDelete }) {
   const { product, cartTable } = styles;
-  const cartItems = [
-    {
-      id: 1,
-      name: "jdsiajdsiodklamlkdmsam",
-      price: 10,
-      sku: 9832,
-      size: "M",
-      quantity: 2,
-      image:
-        "https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-17.2-min.jpg",
-    },
-    {
-      id: 2,
-      name: "jdsiajdsiodklamlkdmsam",
-      price: 20,
-      sku: 9832,
-      size: "M",
-      quantity: 1,
-      image:
-        "https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-17.2-min.jpg",
-    },
-    {
-      id: 3,
-      name: "jdsiajdsiodklamlkdmsam",
-      price: 15,
-      sku: 9832,
-      size: "M",
-      quantity: 3,
-      image:
-        "https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-17.2-min.jpg",
-    },
-  ];
-  const handleDelete = (id) => {
-    console.log("Delete item with id:", id);
-  };
+
+
+
   const handleQuantityChange = (id, newQuantity) => {
     console.log(
       "Update quantity for item with id:",
@@ -54,8 +23,16 @@ function CartTable() {
     { label: "6", value: "6" },
     { label: "7", value: "7" },
   ];
-  const getValueSelect = (value, type) => {
-    console.log("Selected value:", value, "Type:", type);
+  const getValueSelect = (userId, productId, quantity, size) => {
+    const data = {
+      userId,
+      productId,
+      quantity,
+      size,
+      isMultiple: true
+    };
+    // getData(data);
+    getData(data);
   };
   return (
     <div className={cartTable}>
@@ -72,25 +49,45 @@ function CartTable() {
           </tr>
         </thead>
         <tbody>
-          {cartItems.map((item) => (
+          {listProductCart.map((item) => (
             <tr key={item.id}>
               <td className={product}>
-                <img src={item.image} alt={item.name} />
+                <img src={item.images[0]} alt={item.name} />
                 <div>
                   <p>{item.name}</p>
                   <p>Size: {item.size}</p>
                 </div>
               </td>
               <td>
-                <div onClick={() => handleDelete(item.id)}>&#128465;</div>
+                <div
+                  onClick={() =>
+                    getDataDelete({
+                      userId: item.userId,
+                      productId: item.productId
+                    })
+                  }
+                  style={{ cursor: "pointer" }}
+                >
+                  &#128465;
+
+                </div>
+
               </td>
               <td>${item.price.toFixed(2)}</td>
               <td>{item.sku}</td>
               <td>
                 <SelectBox
                   options={showOptions}
-                  getValue={getValueSelect}
+                  getValue={(e) =>
+                    getValueSelect(
+                      item.userId,
+                      item.productId,
+                      e,
+                      item.size
+                    )
+                  }
                   type="show"
+                  defaultValue={item.quantity}
                 />
               </td>
               <td>${(item.price * item.quantity).toFixed(2)}</td>
@@ -98,6 +95,7 @@ function CartTable() {
           ))}
         </tbody>
       </table>
+      {isLoading && <LoadingCart />}
     </div>
   );
 }

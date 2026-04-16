@@ -1,31 +1,38 @@
 @use "@styles/_mixins.module.scss" as *;
 @use "@styles/_variable.module.scss" as *;
+
 .container {
   padding-top: 83px;
 }
+
 .containerSteps {
   @include flex_box_custom(center, center, 0px);
   background-color: #fafafa;
   padding: 2.3vw 0;
   flex-direction: column;
   margin-bottom: 2.3vw;
+
   .steps {
     @include flex_box_custom(center, center, 30px);
+
     .line {
       min-width: 120px;
       height: 1px;
       background-color: #e1e1e1;
     }
   }
+
   .textNoti {
     font-size: 16px;
     color: $four_color;
     padding-top: 35px;
     font-weight: 400;
   }
+
   .stepper {
     @include flex_box_custom(center, center, 10px);
     text-transform: uppercase;
+
     .numberStep {
       @include flex_box_custom(center, center, 0px);
       background-color: #333;
@@ -34,26 +41,32 @@
       border-radius: 50%;
       color: $white_color;
     }
+
     .isDisableNumber {
       background-color: transparent;
       border: 1px solid #e1e1e1;
       color: #bdbcbc;
     }
+
     .textStep {
       font-size: 20px;
       color: $four_color;
       font-weight: 300;
       cursor: pointer;
     }
+
     .isDisableText {
       color: #9a9a9a;
     }
   }
 }
+
 .containerContent {
   @include flex_box_custom(space-between, flex-start, 30px);
+
   .cartTable {
     // width: 100%;
+
     margin: 0 auto;
     padding-bottom: 15px;
     border-bottom: 1px solid #e1e1e1;
@@ -121,6 +134,7 @@
                 }
               }
             }
+
             &:nth-child(4) {
               color: $thr_color;
             }
@@ -143,13 +157,17 @@
         }
       }
     }
+    
   }
+
   .containerRight {
     flex-grow: 1;
   }
+
   .containerSummary {
     padding: 25px;
     border: 2px solid #333;
+    position: relative;
 
     .title {
       font-size: 14px;
@@ -157,26 +175,32 @@
       border-bottom: 1px solid #e1e1e1;
       color: $primary_color;
     }
+
     .boxTotal {
       @include flex_box_custom(space-between, center, 0px);
       margin: 25px 0;
     }
+
     .subTotal {
       color: #555;
+
       .price {
         color: #888;
         font-weight: 300;
         font-size: 14px;
       }
     }
+
     .total {
       color: $four_color;
       font-size: 20px;
     }
+
     .space {
       height: 10px;
     }
   }
+
   .containerMethods {
     padding: 25px 0;
     position: relative;
@@ -184,6 +208,7 @@
     width: 100%;
     border: 1px solid #e1e1e1;
     margin-top: 45px;
+
     .titleMethods {
       position: absolute;
       top: -8px;
@@ -192,13 +217,16 @@
       background-color: #fff;
       padding: 0 10px;
       text-transform: uppercase;
+
       span {
         color: #4eb954;
       }
     }
+
     .boxImgMethods {
       @include flex_box_custom(center, center, 10px);
     }
+
     .imgMethods {
       border: 1px solid #e1e1e1;
       max-width: 50%;
@@ -207,10 +235,72 @@
       border-radius: 5px;
     }
   }
+
   .textSecure {
     text-align: center;
     font-size: 14px;
     color: #777;
     margin-top: 10px;
   }
+
+  .boxFooter {
+    @include flex_box_custom(space-between, center, 0px);
+    margin-top: 25px;
+
+    .boxCoupon {
+      @include flex_box_custom(flex-start, center, 0px);
+
+      input {
+        border: 1px solid #e1e1e1;
+        padding: 8px 15px;
+        width: 300px;
+        outline: none;
+      }
+
+      button {
+        height: 36px;
+        border-radius: 0px;
+        padding: 0px 10px;
+        font-size: 12px;
+        width: 36px;
+      }
+    }
+     .boxBtnDelete {
+            button {
+                height: 36px;
+                font-size: 12px;
+                padding: 0px 30px;
+            }
+        }
+  }
 }
+.boxEmptyCart {
+    @include flex_box_custom(center, center, 20px);
+    flex-direction: column;
+
+    width: 100%;
+    font-size: 14px;
+    color: $thr_color;
+
+    .titleEmpty {
+        font-size: 24px;
+        color: $primary_color;
+    }
+
+    .boxBtnEmpty {
+        button {
+            padding: 0 20px;
+            font-size: 12px;
+        }
+    }
+}
+
+.loadingCart{
+       @include flex_box_custom(center, center, 30px);
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right : 0;
+      background-color: rgba(255,255,255,0.5);
+    }

@@ -75,7 +75,7 @@ function Cart() {
                             </div>
 
                             <div className={boxBtn}>
-                                <Button content={'VIEW CART'} />
+                                <Button content={'VIEW CART'} onClick={handleNavigateToCart}/>
                                 <Button content={'CHECKOUT'} isPrimary={false} />
                             </div>
                         </div>
